@@ -11,12 +11,12 @@ namespace UsefulApp
 
         static string[,] Agosto = new string[6, 7]
         {
-            { null,null,null,null,null,null,"1)"},
-            { "2)","3)","4)","5)","6)","7)","8)"},
-            { "9)","10)","11)","12)","13)","14)","15)"},
-            { "16)","17)","18)","19)","20)","21)","22)"},
-            { "23)","24)","25)","26)","27)","28)","29)"},
-            { "30)","31)",null,null,null,null,null},
+            { null,null,null,null,null,null,"1"},
+            { "2","3","4","5","6","7","8"},
+            { "9","10","11","12","13","14","15"},
+            { "16","17","18","19","20","21","22"},
+            { "23","24","25","26","27","28","29"},
+            { "30","31",null,null,null,null,null},
         };
 
 
@@ -122,25 +122,23 @@ namespace UsefulApp
 
             Test();
 
-            for (int f = 0; f < Agosto.GetLength(0); f++)
-            {
-                for (int c = 0; c < Agosto.GetLength(1); c++)
+            Console.WriteLine("ingrese el dia");
+            day = Console.ReadLine();
+
+                for (int f = 0; f < Agosto.GetLength(0); f++)
                 {
-                    Console.WriteLine("ingrese el dia");
-                    day = Console.ReadLine();
-
-                    if (Agosto[f,c] == day)
+                    for (int c = 0; c < Agosto.GetLength(1); c++)
                     {
-                        dato = Console.ReadLine();
-                        Agosto[f, c] = dato;
-                        break;
+                        if (Agosto[f,c] == day)
+                        {
+                            Console.WriteLine("Ingrese el dia y el evento");
+                            dato = Console.ReadLine();
+                            Agosto[f, c] = dato;
+                        }
                     }
-                    break;
                 }
-            }
-
-
             
+                    
             
 
 
