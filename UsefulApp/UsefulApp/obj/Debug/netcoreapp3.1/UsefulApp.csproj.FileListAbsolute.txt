@@ -1,0 +1,13 @@
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.exe
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.deps.json
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.runtimeconfig.json
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.runtimeconfig.dev.json
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.dll
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.pdb
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.csproj.AssemblyReference.cache
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.AssemblyInfoInputs.cache
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.AssemblyInfo.cs
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.csproj.CoreCompileInputs.cache
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.dll
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.pdb
+C:\Users\Franco\Documents\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.genruntimeconfig.cache
