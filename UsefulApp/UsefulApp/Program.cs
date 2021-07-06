@@ -41,7 +41,8 @@ namespace UsefulApp
 			Console.WriteLine("║  3) Sistemas Operativos                 ║");
 			Console.WriteLine("║  4) Teleinformatica                     ║");
 			Console.WriteLine("╚═════════════════════════════════════════╝\n");
-			Console.Write("Select your subjet: ");
+
+			Console.Write("Select an option: ");
 			Options(op);
 
 		}
