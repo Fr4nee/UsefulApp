@@ -16,6 +16,14 @@ namespace UsefulApp
 			{ "23","24","25","26","27","28","29"},
 			{ "30","31",null,null,null,null,null},
 		};
+		static string[,] September = new string[5, 7]
+		{
+			{ null,null,"1","2","3","4","5"},
+			{ "6","7","8","9","10","11","12"},
+			{ "13","14","15","16","17","18","19"},
+			{ "20","21","22","23","24","25","26"},
+			{ "27","28","29","30",null,null,null}
+		};
 		static void Main(string[] args)
 		{
 			App();
@@ -32,7 +40,7 @@ namespace UsefulApp
 			Console.WriteLine("╔═════════════════════════════════════════╗");
 			Console.WriteLine("║           ***Usefull App***             ║");
 			Console.WriteLine("║                                         ║");
-			Console.WriteLine("║  1) Show Calendar                       ║");
+			Console.WriteLine("║  1) Calendar                            ║");
 			Console.WriteLine("║  2) Add Events                          ║");
 			Console.WriteLine("║  3) ****                                ║");
 			Console.WriteLine("║  4) ****                                ║");
@@ -48,7 +56,7 @@ namespace UsefulApp
 			{
 				case 1:
 					Console.Clear();
-					ShowCalendar();
+					CalendarMenu();
 					break;
 				case 2:
 					Console.Clear();
@@ -72,27 +80,67 @@ namespace UsefulApp
 			}
 			return op;
 		}
-		public static int ExitApp()
+		static void CalendarMenu()
+        {
+			Console.Clear();
+			Console.WriteLine("╔═════════════════════════════════════════╗");
+			Console.WriteLine("║           ***Usefull App***             ║");
+			Console.WriteLine("║               *Calendar*                ║");
+			Console.WriteLine("║                                         ║");
+			Console.WriteLine("║  1) August                              ║");
+			Console.WriteLine("║  2) September                           ║");
+			Console.WriteLine("║  3) Back                                ║");
+			Console.WriteLine("╚═════════════════════════════════════════╝\n");
+			Console.Write("Select an option: ");
+			Calendar(op);
+		}
+		static int Calendar(int op)
 		{
-			string exit;
-			Console.WriteLine("Are you sure to Exit ? y/n");
-			exit = Console.ReadLine().ToLower().Trim();
-			if (exit == "y")
-				op = 5;
-			else if (exit == "n")
-				op = 0;
+			int.TryParse(Console.ReadLine(), out op);
+			switch (op)
+			{
+				case 1:
+					Console.Clear();
+					ShowAugust();
+					break;
+				case 2:
+					Console.Clear();
+					ShowSeptember();
+					break;
+				case 3:
+					break;
+
+				default:
+					Console.Clear();
+					Console.WriteLine("Select the correct option...");
+					break;
+			}
 			return op;
 		}
-		static void ShowCalendar()
+		static void ShowAugust()
 		{
 			for (int c = 0; c < days.Length; c++)
 				Console.Write($"|{days[c],-13}");
 			Console.WriteLine();
 			for (int fi = 0; fi < August.GetLength(0); fi++)
-			{ 
+			{
 				Console.Write("|");
 				for (int ci = 0; ci < August.GetLength(1); ci++)
 					Console.Write($"{August[fi, ci],-13}|");
+				Console.WriteLine();
+			}
+			Console.ReadKey();
+		}
+		static void ShowSeptember()
+		{
+			for (int c = 0; c < days.Length; c++)
+				Console.Write($"|{days[c],-13}");
+			Console.WriteLine();
+			for (int fi = 0; fi < September.GetLength(0); fi++)
+			{
+				Console.Write("|");
+				for (int ci = 0; ci < September.GetLength(1); ci++)
+					Console.Write($"{September[fi, ci],-13}|");
 				Console.WriteLine();
 			}
 			Console.ReadKey();
@@ -101,10 +149,9 @@ namespace UsefulApp
 		{
 			string dato;
 			string day;
-			ShowCalendar();
+			ShowAugust();
 			Console.Write("Enter the day:");
 			day = Console.ReadLine();
-
 			for (int f = 0; f < August.GetLength(0); f++)
 			{
 				for (int c = 0; c < August.GetLength(1); c++)
@@ -117,6 +164,17 @@ namespace UsefulApp
 					}
 				}
 			}
+		}
+		public static int ExitApp()
+		{
+			string exit;
+			Console.WriteLine("Are you sure to Exit ? y/n");
+			exit = Console.ReadLine().ToLower().Trim();
+			if (exit == "y")
+				op = 5;
+			else if (exit == "n")
+				op = 0;
+			return op;
 		}
 	}
 }
