@@ -81,7 +81,7 @@ namespace UsefulApp
 			return op;
 		}
 		static void CalendarMenu()
-        {
+		{
 			Console.Clear();
 			Console.WriteLine("╔═════════════════════════════════════════╗");
 			Console.WriteLine("║           ***Usefull App***             ║");
