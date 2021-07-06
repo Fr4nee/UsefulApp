@@ -7,10 +7,10 @@ namespace UsefulApp
     {
         static int op = 0;
 
+        static string[] days = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
-        static string[,] Calendar = new string[7, 7]
+        static string[,] Agosto = new string[6, 7]
         {
-            {"Monday","Tuesday","Wednesday", "Thursday", "Friday", "Saturday", "Sunday"},
             { null,null,null,null,null,null,"1)"},
             { "2)","3)","4)","5)","6)","7)","8)"},
             { "9)","10)","11)","12)","13)","14)","15)"},
@@ -96,14 +96,18 @@ namespace UsefulApp
 
 
         static void Test()
-        {         
+        {
+            for (int c = 0; c < days.Length; c++)
+            {
+                Console.Write($"|{days[c],-13}");
+            }
             Console.WriteLine();
-            for (int fi = 0; fi < Calendar.GetLength(0); fi++)
+            for (int fi = 0; fi < Agosto.GetLength(0); fi++)
             {
                 Console.Write("|");
-                for (int ci = 0; ci < Calendar.GetLength(1); ci++)
+                for (int ci = 0; ci < Agosto.GetLength(1); ci++)
                 {
-                    Console.Write($"{Calendar[fi, ci],-13}|");
+                    Console.Write($"{Agosto[fi, ci],-13}|");
                 }
                 Console.WriteLine();
             }
@@ -113,32 +117,25 @@ namespace UsefulApp
 
         static void IntroduceData()
         {
-
             string dato;
-
-            string dayWeek;
             string day;
 
             Test();
 
-            for (int f = 0; f < Calendar.GetLength(0); f++)
+            for (int f = 0; f < Agosto.GetLength(0); f++)
             {
-                Console.WriteLine("Ingrese dia de la semana:");
-                dayWeek = Console.ReadLine();
-                if (Calendar[0, f] == dayWeek)
+                for (int c = 0; c < Agosto.GetLength(1); c++)
                 {
-                    for (int c = 0; c < Calendar.GetLength(1); c++)
-                    {
-                        Console.WriteLine("Ingrese dia:");
-                        day = Console.ReadLine();
+                    Console.WriteLine("ingrese el dia");
+                    day = Console.ReadLine();
 
-                        if (Calendar[f, c] == day)
-                        {
-                            dato = Console.ReadLine();
-                            Calendar[f, c] = dato;
-                        }
+                    if (Agosto[f,c] == day)
+                    {
+                        dato = Console.ReadLine();
+                        Agosto[f, c] = dato;
                         break;
                     }
+                    break;
                 }
             }
 
