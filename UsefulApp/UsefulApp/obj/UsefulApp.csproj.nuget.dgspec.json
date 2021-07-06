@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Facu\\Desktop\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj": {}
   },
   "projects": {
@@ -22,6 +23,23 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+=======
+    "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj",
+        "projectName": "UsefulApp",
+        "projectPath": "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj",
+        "packagesPath": "C:\\Users\\Franco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Franco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> ecdb3859603117f08c84f51d2914d8a6321ccd3b
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -60,7 +78,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+>>>>>>> ecdb3859603117f08c84f51d2914d8a6321ccd3b
         }
       }
     }
