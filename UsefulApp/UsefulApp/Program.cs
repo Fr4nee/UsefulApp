@@ -7,9 +7,7 @@ namespace UsefulApp
         static int op = 0;
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-        
-=======
+
             App();
         }
         static void App()
@@ -18,7 +16,7 @@ namespace UsefulApp
             {
                 MainMenu();
             }
-            while (op == 5);
+            while (op != 5);
         }
         static void MainMenu()
         {
@@ -50,18 +48,36 @@ namespace UsefulApp
                     break;
                 case 3:
                     Console.Clear();
-                    Console.WriteLine("entro1");
+                    Console.WriteLine("entro3");
                     break;
                 case 4:
                     Console.Clear();
-                    Console.WriteLine("entro1");
+                    Console.WriteLine("entro4");
+                    break;
+                case 5:
+                    Console.Clear();
+                    ExitApp();
                     break;
 
                 default:
                     break;
             }
             return op;
->>>>>>> ecdb3859603117f08c84f51d2914d8a6321ccd3b
+
         }
+
+        public static int ExitApp()
+        {
+            string exit;
+            Console.WriteLine("Are you sure to Exit ? y/n");
+            exit = Console.ReadLine().ToLower().Trim();
+            if (exit == "y")
+                op = 5;
+            else if (exit == "n")
+                op = 0;
+
+            return op;
+        }
+
     }
 }
