@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "2xAndkhXKYYlNUQpdIk8SxLWFon887N6vlMrMx77kCZetSIOidgMwVr5vdf28skhS3qij7vzMh0uCwReXJQWhA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Facu\\Desktop\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj",
+=======
+  "dgSpecHash": "6kdocEw7Cwqqsf/H4VnnHHzNvXWOVv/t2bKKR2yr0LiK73R5tgqA0KDrlS/wneTLHn+jB0VSBZAdKtl0IpA+4w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj",
+>>>>>>> 1701615b6604259cb592d6f83fe7e37d75ffa814
   "expectedPackageFiles": [],
   "logs": [
     {
