@@ -101,6 +101,8 @@ namespace UsefulApp
 					break;
 				case 3:
 					Console.Clear();
+					Menu("Delete Events");
+					OptionsDeleteEvents(op);
 					break;
 				case 4:
 					Console.Clear();
@@ -185,15 +187,15 @@ namespace UsefulApp
 			{
 				case 1:
 					Console.Clear();
-					AEAugust();
+					AEMonth(August, AugustEvent);
 					break;
 				case 2:
 					Console.Clear();
-					AESeptember();
+					AEMonth(September, SeptemberEvent);
 					break;
 				case 3:
 					Console.Clear();
-					AEOctober();
+					AEMonth(October, OctoberEvent);
 					break;
 				case 4:
 					break;
@@ -205,69 +207,78 @@ namespace UsefulApp
 			}
 			return op;
 		}
-		static void AEAugust()
+
+		static int OptionsDeleteEvents(int op)
+		{
+			int.TryParse(Console.ReadLine(), out op);
+			switch (op)
+			{
+				case 1:
+					Console.Clear();
+					DeleteMonth(August, AugustEvent);
+					break;
+				case 2:
+					Console.Clear();
+					DeleteMonth(September, SeptemberEvent);
+					break;
+				case 3:
+					Console.Clear();
+					DeleteMonth(October, OctoberEvent);
+					break;
+				case 4:
+					break;
+
+				default:
+					Console.Clear();
+					Console.WriteLine("Select the correct option...");
+					break;
+			}
+			return op;
+		}
+
+		static void AEMonth(string[,] month, string[,] monthChange)
 		{
 			string dato;
 			string day;
-			ShowMonth(August, AugustEvent);
+			ShowMonth(month, monthChange);
 			Console.Write("Enter the day:");
 			day = Console.ReadLine();
-			for (int f = 0; f < August.GetLength(0); f++)
+			for (int f = 0; f < month.GetLength(0); f++)
 			{
-				for (int c = 0; c < August.GetLength(1); c++)
+				for (int c = 0; c < month.GetLength(1); c++)
 				{
-					if (August[f, c] == day)
+					if (month[f, c] == day)
 					{
 						Console.WriteLine("Enter the event");
 						dato = Console.ReadLine();
-						AugustEvent[f, c] = dato;
+						monthChange[f, c] = dato;
 					}
 				}
 			}
-			ShowMonth(August, AugustEvent);
+			Console.Clear();
+			ShowMonth(month, monthChange);
 		}
-		static void AESeptember()
+
+		static void DeleteMonth(string[,] month, string[,] monthChange)
 		{
-			string dato;
 			string day;
-			ShowMonth(September, SeptemberEvent);
+			ShowMonth(month, monthChange);
 			Console.Write("Enter the day:");
 			day = Console.ReadLine();
-			for (int f = 0; f < September.GetLength(0); f++)
+			for (int f = 0; f < month.GetLength(0); f++)
 			{
-				for (int c = 0; c < September.GetLength(1); c++)
+				for (int c = 0; c < month.GetLength(1); c++)
 				{
-					if (September[f, c] == day)
+					if (month[f, c] == day)
 					{
-						Console.WriteLine("Enter the event");
-						dato = Console.ReadLine();
-						SeptemberEvent[f, c] = dato;
+						monthChange[f, c] = null;
 					}
 				}
 			}
-			ShowMonth(September, SeptemberEvent);
+			Console.Clear();
+			ShowMonth(month, monthChange);
 		}
-		static void AEOctober()
-		{
-			string dato;
-			string day;
-			ShowMonth(October, OctoberEvent);
-			Console.Write("Enter the day:");
-			day = Console.ReadLine();
-			for (int f = 0; f < October.GetLength(0); f++)
-			{
-				for (int c = 0; c < October.GetLength(1); c++)
-				{
-					if (October[f, c] == day)
-					{
-						Console.WriteLine("Enter the event");
-						dato = Console.ReadLine();
-						OctoberEvent[f, c] = dato;
-					}
-				}
-			}
-			ShowMonth(October, OctoberEvent);
-		}
+
 		public static int ExitApp()
 		{
 			string exit;
