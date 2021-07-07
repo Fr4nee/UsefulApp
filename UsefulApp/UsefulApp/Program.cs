@@ -24,13 +24,24 @@ namespace UsefulApp
 			{ "20","21","22","23","24","25","26"},
 			{ "27","28","29","30",null,null,null}
 		};
+
+		static string[,] AugustEvent = new string[6, 7]
+		{
+			{ null,null,null,null,null,null,null},
+			{ null,null,null,null,null,null,null},
+			{ null,null,null,null,null,null,null},
+			{ null,null,null,null,null,null,null},
+			{ null,null,null,null,null,null,null},
+			{ null,null,null,null,null,null,null},
+		};
+
 		static void Main(string[] args)
 		{
 			App();
-		}     
+		}
 		static void App()
 		{
-			do         
+			do
 				MainMenu();
 			while (op != 5);
 		}
@@ -126,7 +137,10 @@ namespace UsefulApp
 			{
 				Console.Write("|");
 				for (int ci = 0; ci < August.GetLength(1); ci++)
-					Console.Write($"{August[fi, ci],-13}|");
+				{
+					Console.Write($"{August[fi, ci],-2}-");
+					Console.Write($"{AugustEvent[fi, ci],-8}|");
+				}
 				Console.WriteLine();
 			}
 			Console.ReadKey();
@@ -160,7 +174,7 @@ namespace UsefulApp
 					{
 						Console.WriteLine("Enter the day again and the event");
 						dato = Console.ReadLine();
-						August[f, c] = dato;
+						AugustEvent[f, c] = dato;
 					}
 				}
 			}
@@ -178,3 +192,4 @@ namespace UsefulApp
 		}
 	}
 }
+
