@@ -24,3 +24,16 @@ C:\Users\Facu\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\Usef
 C:\Users\Facu\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.dll
 C:\Users\Facu\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.pdb
 C:\Users\Facu\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.genruntimeconfig.cache
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.exe
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.deps.json
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.runtimeconfig.json
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.runtimeconfig.dev.json
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.dll
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\bin\Debug\netcoreapp3.1\UsefulApp.pdb
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.csproj.AssemblyReference.cache
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.AssemblyInfoInputs.cache
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.AssemblyInfo.cs
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.csproj.CoreCompileInputs.cache
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.dll
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.pdb
+C:\Users\Nico\Desktop\UsefulApp\UsefulApp\UsefulApp\obj\Debug\netcoreapp3.1\UsefulApp.genruntimeconfig.cache

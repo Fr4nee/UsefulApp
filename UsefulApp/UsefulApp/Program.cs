@@ -76,8 +76,8 @@ namespace UsefulApp
 			Console.WriteLine("║           ***Usefull App***             ║");
 			Console.WriteLine("║                                         ║");
 			Console.WriteLine("║  1) Calendar                            ║");
-			Console.WriteLine("║  2) Add Events                          ║");
-			Console.WriteLine("║  3) ****                                ║");
+			Console.WriteLine("║  2) Add or change Events                ║");
+			Console.WriteLine("║  3) Delete Events                       ║");
 			Console.WriteLine("║  4) ****                                ║");
 			Console.WriteLine("║  5) Exit                                ║");
 			Console.WriteLine("╚═════════════════════════════════════════╝\n");
@@ -91,11 +91,13 @@ namespace UsefulApp
 			{
 				case 1:
 					Console.Clear();
-					CalendarMenu();
+					Menu("Calendar");
+					OptionsCalendar(op);
 					break;
 				case 2:
 					Console.Clear();
-					AddEventsMenu();
+					Menu("Add Events");
+					OptionsAddEvents(op);
 					break;
 				case 3:
 					Console.Clear();
@@ -115,21 +117,7 @@ namespace UsefulApp
 			}
 			return op;
 		}
-		static void CalendarMenu()
-		{
-			Console.Clear();
-			Console.WriteLine("╔═════════════════════════════════════════╗");
-			Console.WriteLine("║           ***Usefull App***             ║");
-			Console.WriteLine("║              *Calendar*                 ║");
-			Console.WriteLine("║                                         ║");
-			Console.WriteLine("║  1) August                              ║");
-			Console.WriteLine("║  2) September                           ║");
-			Console.WriteLine("║  3) October                             ║");
-			Console.WriteLine("║  4) Back                                ║");
-			Console.WriteLine("╚═════════════════════════════════════════╝\n");
-			Console.Write("Select an option: ");
-			OptionsCalendar(op);
-		}
+
 		static int OptionsCalendar(int op)
 		{
 			int.TryParse(Console.ReadLine(), out op);
@@ -137,15 +125,15 @@ namespace UsefulApp
 			{
 				case 1:
 					Console.Clear();
-					ShowAugust();
+					ShowMonth(August, AugustEvent);
 					break;
 				case 2:
 					Console.Clear();
-					ShowSeptember();
+					ShowMonth(September, SeptemberEvent);
 					break;
 				case 3:
 					Console.Clear();
-					ShowOctober();
+					ShowMonth(October, OctoberEvent);
 					break;
 				case 4:
 					break;
@@ -157,63 +145,31 @@ namespace UsefulApp
 			}
 			return op;
 		}
-		static void ShowAugust()
+
+		static void ShowMonth(string[,] month, string[,] monthChange)
 		{
 			for (int c = 0; c < days.Length; c++)
 				Console.Write($"|{days[c],-12}");
 			Console.WriteLine();
-			for (int fi = 0; fi < August.GetLength(0); fi++)
+			for (int fi = 0; fi < month.GetLength(0); fi++)
 			{
 				Console.Write("|");
-				for (int ci = 0; ci < August.GetLength(1); ci++)
+				for (int ci = 0; ci < month.GetLength(1); ci++)
 				{
-					Console.Write($"{August[fi, ci],-2}-");
-					Console.Write($"{AugustEvent[fi, ci],-8}|");
+					Console.Write($"{month[fi, ci],-2}-");
+					Console.Write($"{monthChange[fi, ci],-9}|");
 				}
 				Console.WriteLine();
 			}
 			Console.ReadKey();
 		}
-		static void ShowSeptember()
-		{
-			for (int c = 0; c < days.Length; c++)
-				Console.Write($"|{days[c],-12}");
-			Console.WriteLine();
-			for (int fi = 0; fi < September.GetLength(0); fi++)
-			{
-				Console.Write("|");
-				for (int ci = 0; ci < September.GetLength(1); ci++)
-				{
-					Console.Write($"{September[fi, ci],-2}-");
-					Console.Write($"{SeptemberEvent[fi, ci],-8}|");
-				}
-				Console.WriteLine();
-			}
-			Console.ReadKey();
-		}
-		static void ShowOctober()
-		{
-			for (int c = 0; c < days.Length; c++)
-				Console.Write($"|{days[c],-12}");
-			Console.WriteLine();
-			for (int fi = 0; fi < October.GetLength(0); fi++)
-			{
-				Console.Write("|");
-				for (int ci = 0; ci < October.GetLength(1); ci++)
-				{
-					Console.Write($"{October[fi, ci],-2}-");
-					Console.Write($"{OctoberEvent[fi, ci],-8}|");
-				}
-				Console.WriteLine();
-			}
-			Console.ReadKey();
-		}
-		static void AddEventsMenu()
+
+		static void Menu(string categoria)
 		{
 			Console.Clear();
 			Console.WriteLine("╔═════════════════════════════════════════╗");
 			Console.WriteLine("║           ***Usefull App***             ║");
-			Console.WriteLine("║             *Add Events*                ║");
+			Console.WriteLine($"║             *{categoria, -11}*               ║");
 			Console.WriteLine("║                                         ║");
 			Console.WriteLine("║  1) August                              ║");
 			Console.WriteLine("║  2) September                           ║");
@@ -221,7 +177,6 @@ namespace UsefulApp
 			Console.WriteLine("║  4) Back                                ║");
 			Console.WriteLine("╚═════════════════════════════════════════╝\n");
 			Console.Write("Select a month: ");
-			OptionsAddEvents(op);
 		}
 		static int OptionsAddEvents(int op)
 		{
@@ -254,7 +209,7 @@ namespace UsefulApp
 		{
 			string dato;
 			string day;
-			ShowAugust();
+			ShowMonth(August, AugustEvent);
 			Console.Write("Enter the day:");
 			day = Console.ReadLine();
 			for (int f = 0; f < August.GetLength(0); f++)
@@ -269,13 +224,13 @@ namespace UsefulApp
 					}
 				}
 			}
-			ShowAugust();
+			ShowMonth(August, AugustEvent);
 		}
 		static void AESeptember()
 		{
 			string dato;
 			string day;
-			ShowSeptember();
+			ShowMonth(September, SeptemberEvent);
 			Console.Write("Enter the day:");
 			day = Console.ReadLine();
 			for (int f = 0; f < September.GetLength(0); f++)
@@ -290,13 +245,13 @@ namespace UsefulApp
 					}
 				}
 			}
-			ShowSeptember();
+			ShowMonth(September, SeptemberEvent);
 		}
 		static void AEOctober()
 		{
 			string dato;
 			string day;
-			ShowOctober();
+			ShowMonth(October, OctoberEvent);
 			Console.Write("Enter the day:");
 			day = Console.ReadLine();
 			for (int f = 0; f < October.GetLength(0); f++)
@@ -311,7 +266,7 @@ namespace UsefulApp
 					}
 				}
 			}
-			ShowOctober();
+			ShowMonth(October, OctoberEvent);
 		}
 		public static int ExitApp()
 		{
