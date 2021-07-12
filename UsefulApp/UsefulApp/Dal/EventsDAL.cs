@@ -21,17 +21,18 @@ namespace UsefulApp.Dal
             {
                 using (SqlConnection con = new SqlConnection(_connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("SP_EVENTS1_GET_LIST", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
+                    SqlCommand cmd = new SqlCommand("SP_SHOWEVENTS", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     SqlDataReader rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
                         listEventsModels.Add(new EventsModels
                         {
                             id_event = Convert.ToInt32(rdr[0]),
-                            nameEvent = rdr[1].ToString()
-                            
+                            nameEvent = rdr[1].ToString(),
+                            id_user = Convert.ToInt32(rdr[2]),
+                            eventDate = Convert.ToDateTime(rdr[3])
                         });
                     }
                 }
@@ -43,6 +44,32 @@ namespace UsefulApp.Dal
             return listEventsModels;
         }
 
-       
+        public EventsModels AddEvents(string eventName, string userName)
+        {
+            int auxiduser = 2;
+            var eventaux = new EventsModels();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("sp_add_event", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@eventName", SqlDbType.NVarChar).Value = eventName;
+                    cmd.Parameters.AddWithValue("@username", SqlDbType.NVarChar).Value = userName;
+                    cmd.Parameters.AddWithValue("@EventDate", SqlDbType.Date).Value = DateTime.Now;
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return eventaux;
+        }
+
+
     }
 }

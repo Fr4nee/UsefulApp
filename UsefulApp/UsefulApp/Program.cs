@@ -14,6 +14,8 @@ namespace UsefulApp
 		static void Main(string[] args)
 		{
 			GetAppSettingsFile();
+			var eventsDAL = new EventsDAL(_iconfiguration);
+			var listEventsModels = eventsDAL.AddEvents("Droga", "Facu");
 			PrintEvents();
 		}
 		static void GetAppSettingsFile()
@@ -30,7 +32,10 @@ namespace UsefulApp
 			
 			listEventsModels.ForEach(item =>
 			{
+				Console.WriteLine(item.id_event);
 				Console.WriteLine(item.nameEvent);
+				Console.WriteLine(item.id_user);
+				Console.WriteLine(item.eventDate);
 			});
 			Console.WriteLine("Press any key to stop.");
 			Console.ReadKey();
