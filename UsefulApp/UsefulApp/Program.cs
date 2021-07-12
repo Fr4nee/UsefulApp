@@ -26,23 +26,17 @@ namespace UsefulApp
 		{		
 			var eventsDAL = new EventsDAL(_iconfiguration);
 			var listEventsModels = eventsDAL.GetList(); 
-
-		
+			
             for (int i = 0; i < listEventsModels.Count; i++)
             {
-
-				Console.Write($"{listEventsModels[i].id_user,-10}|");
-
-
-
-				Console.Write($"|{listEventsModels[i].id_event,-10}|");
+				//Console.Write($"|{listEventsModels[i].id_user,-10}|"); 
+				Console.Write($"|{listEventsModels[i].userName,-10}|");
+				//Console.Write($"{listEventsModels[i].id_event,-10}|");
 				Console.Write($"{listEventsModels[i].nameEvent,-10}|");
-				Console.Write($"{listEventsModels[i].id_user,-10}|");
 				Console.Write($"{listEventsModels[i].eventDate,-10}|");
 				Console.WriteLine();
 			}
-
-			Console.WriteLine("Press any key to stop.");
+			Console.WriteLine("\nPress any key to stop.");
 			Console.ReadKey();
 		}
 		public static void FillAddEvents()

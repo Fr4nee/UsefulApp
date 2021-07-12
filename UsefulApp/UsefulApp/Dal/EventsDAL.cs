@@ -23,17 +23,18 @@ namespace UsefulApp.Dal
                 using (SqlConnection con = new SqlConnection(_connectionString))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("SP_SHOWEVENTS", con);
+                    SqlCommand cmd = new SqlCommand("SP_SHOWEVENTS1", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     SqlDataReader rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
                         listEventsModels.Add(new EventsModels
                         {
-                            id_event = Convert.ToInt32(rdr[0]),
+                            //id_user = Convert.ToInt32(rdr[0]),
+                            userName = rdr[0].ToString(),
+                            //id_event = Convert.ToInt32(rdr[2]),
                             nameEvent = rdr[1].ToString(),
-                            id_user = Convert.ToInt32(rdr[2]),
-                            eventDate = Convert.ToDateTime(rdr[3])
+                            eventDate = Convert.ToDateTime(rdr[2])
                         });
                     }
                 }
