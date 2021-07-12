@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\Facu\\Desktop\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj": {}
   },
   "projects": {
@@ -23,23 +22,6 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-=======
-    "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj",
-        "projectName": "UsefulApp",
-        "projectPath": "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\UsefulApp.csproj",
-        "packagesPath": "C:\\Users\\Franco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Franco\\Documents\\UsefulApp\\UsefulApp\\UsefulApp\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Franco\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> 1701615b6604259cb592d6f83fe7e37d75ffa814
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -63,6 +45,28 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[3.1.13, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
