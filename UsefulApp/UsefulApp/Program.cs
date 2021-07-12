@@ -49,7 +49,6 @@ namespace UsefulApp
 			Console.Write("Describe the event: ");
             eventName = Console.ReadLine();
             
-
 			var eventsDAL = new EventsDAL(_iconfiguration);
 			var listEventsModels = eventsDAL.AddEvents(eventName, userName);
 		}
@@ -68,7 +67,6 @@ namespace UsefulApp
 
 			} while (ControlMenu() != 4);
 		}
-
 		static int ControlMenu()
         {
 			int op;
@@ -96,9 +94,6 @@ namespace UsefulApp
             }
 			return op;
 		}
-
-
-		
 
 	}
 }
