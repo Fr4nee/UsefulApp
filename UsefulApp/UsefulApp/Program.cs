@@ -24,14 +24,13 @@ namespace UsefulApp
 			_iconfiguration = builder.Build();
 		}
 		static void PrintEvents()
-		{
-			
+		{		
 			var eventsDAL = new EventsDAL(_iconfiguration);
 			var listEventsModels = eventsDAL.GetList(); 
 			
 			listEventsModels.ForEach(item =>
 			{
-				Console.WriteLine(item.NameEvent);
+				Console.WriteLine(item.nameEvent);
 			});
 			Console.WriteLine("Press any key to stop.");
 			Console.ReadKey();

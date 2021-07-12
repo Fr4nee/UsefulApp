@@ -4,8 +4,8 @@ namespace UsefulApp.Model
 {
     class EventsModels
     {
-        public int Id_Event { get; set; }
-        public string NameEvent { get; set; }
+        public int id_event { get; set; }
+        public string nameEvent { get; set; }
        
     }
 }

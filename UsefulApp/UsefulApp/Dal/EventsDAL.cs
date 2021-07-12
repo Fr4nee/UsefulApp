@@ -21,7 +21,7 @@ namespace UsefulApp.Dal
             {
                 using (SqlConnection con = new SqlConnection(_connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("SP_Events_GET_LIST", con);
+                    SqlCommand cmd = new SqlCommand("SP_EVENTS1_GET_LIST", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
@@ -29,8 +29,8 @@ namespace UsefulApp.Dal
                     {
                         listEventsModels.Add(new EventsModels
                         {
-                            Id_Event = Convert.ToInt32(rdr[0]),
-                            NameEvent = rdr[1].ToString()
+                            id_event = Convert.ToInt32(rdr[0]),
+                            nameEvent = rdr[1].ToString()
                             
                         });
                     }
