@@ -10,6 +10,7 @@ namespace UsefulApp.Dal
     class EventsDAL
     {
         private string _connectionString;
+
         public EventsDAL(IConfiguration iconfiguration)
         {
             _connectionString = iconfiguration.GetConnectionString("Default");
@@ -46,8 +47,8 @@ namespace UsefulApp.Dal
 
         public EventsModels AddEvents(string eventName, string userName)
         {
-            int auxiduser = 2;
             var eventaux = new EventsModels();
+            
             try
             {
                 using (SqlConnection con = new SqlConnection(_connectionString))
@@ -58,7 +59,6 @@ namespace UsefulApp.Dal
                     cmd.Parameters.AddWithValue("@eventName", SqlDbType.NVarChar).Value = eventName;
                     cmd.Parameters.AddWithValue("@username", SqlDbType.NVarChar).Value = userName;
                     cmd.Parameters.AddWithValue("@EventDate", SqlDbType.Date).Value = DateTime.Now;
-
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
