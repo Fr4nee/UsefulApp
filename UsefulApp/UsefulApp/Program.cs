@@ -14,7 +14,6 @@ namespace UsefulApp
 			GetAppSettingsFile();
 			Menu();
 		}
-
 		static void GetAppSettingsFile()
 		{
 			var builder = new ConfigurationBuilder()
@@ -22,7 +21,6 @@ namespace UsefulApp
 								 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 			_iconfiguration = builder.Build();
 		}
-
 		static void PrintEvents()
 		{
 			var eventsDAL = new EventsDAL(_iconfiguration);
@@ -45,7 +43,6 @@ namespace UsefulApp
 			}
 			Console.ReadKey();
 		}
-
 		static void PrintMonthEvents()
 		{
 			var eventsDAL = new EventsDAL(_iconfiguration);
@@ -63,7 +60,6 @@ namespace UsefulApp
 			}
 			Console.ReadKey();
 		}
-
         private static string SelectMonth()
         {
 			int aux;
@@ -134,7 +130,6 @@ namespace UsefulApp
 			}
 			return monthToReturn;
 		}
-
         public static void FillAddEvents()
         {
 			string eventName;
@@ -148,7 +143,6 @@ namespace UsefulApp
 			var eventsDAL = new EventsDAL(_iconfiguration);
 			var listEventsModels = eventsDAL.AddEvents(eventName, userName);
 		}
-
 		static void Menu()
         {
             do
@@ -164,7 +158,6 @@ namespace UsefulApp
 
 			} while (ControlMenu() != 4);
 		}
-
 		static int ControlMenu()
         {
 			int op;
@@ -209,10 +202,6 @@ namespace UsefulApp
 
 			PrintEvents();
 		}
-
-
-
-
 	}
 }
 
