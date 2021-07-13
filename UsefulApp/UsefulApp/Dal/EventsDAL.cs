@@ -30,11 +30,11 @@ namespace UsefulApp.Dal
                     {
                         listEventsModels.Add(new EventsModels
                         {
-                            //id_user = Convert.ToInt32(rdr[0]),
-                            userName = rdr[0].ToString(),
-                            //id_event = Convert.ToInt32(rdr[2]),
-                            nameEvent = rdr[1].ToString(),
-                            eventDate = Convert.ToDateTime(rdr[2])
+                            id_event = Convert.ToInt32(rdr[0]),
+                            userName = rdr[1].ToString(),
+                            nameEvent = rdr[2].ToString(),
+                            eventDate = Convert.ToDateTime(rdr[3]),
+                            id_user = Convert.ToInt32(rdr[4])
                         });
                     }
                 }
@@ -69,6 +69,29 @@ namespace UsefulApp.Dal
                 throw ex;
             }
             return eventaux;
+        }
+
+        public EventsModels DeleteEvents(int idevent)
+        {
+            var eventidaux = new EventsModels();
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("sp_delete_event", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idevent", SqlDbType.Int).Value = idevent;
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return eventidaux;
         }
 
 
