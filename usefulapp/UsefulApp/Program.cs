@@ -25,18 +25,23 @@ namespace UsefulApp
 		static void PrintEvents()
 		{		
 			var eventsDAL = new EventsDAL(_iconfiguration);
-			var listEventsModels = eventsDAL.GetList(); 
-			
+			var listEventsModels = eventsDAL.GetList();
+
+			string[] eventsBanner = { "Id Event", "Person", "Event", "Date" };
+
+            for (int i = 0; i < eventsBanner.Length; i++)
+            {
+				Console.Write($"|{eventsBanner[i],-10}");
+            }
+			Console.WriteLine();
             for (int i = 0; i < listEventsModels.Count; i++)
             {
-				//Console.Write($"|{listEventsModels[i].id_user,-10}|"); 
-				Console.Write($"|{listEventsModels[i].userName,-10}|");
-				//Console.Write($"{listEventsModels[i].id_event,-10}|");
+				Console.Write($"|{listEventsModels[i].id_event,-10}|");
+				Console.Write($"{listEventsModels[i].userName,-10}|");
 				Console.Write($"{listEventsModels[i].nameEvent,-10}|");
 				Console.Write($"{listEventsModels[i].eventDate,-10}|");
 				Console.WriteLine();
 			}
-			Console.WriteLine("\nPress any key to stop.");
 			Console.ReadKey();
 		}
 		public static void FillAddEvents()
@@ -61,7 +66,7 @@ namespace UsefulApp
 				Console.WriteLine("***Useful App***");
 				Console.WriteLine("1) Add Events");
 				Console.WriteLine("2) Show Events");
-				Console.WriteLine("3) ");
+				Console.WriteLine("3) Delete Events");
 				Console.WriteLine("4) Exit\n");
 				Console.Write("select an option: ");
 
@@ -84,7 +89,7 @@ namespace UsefulApp
 					break;
 				case 3:
 					Console.Clear();
-					Console.WriteLine("3)");
+					DeleteEvents();
 					break;
 				case 4:
 					break;
@@ -93,6 +98,20 @@ namespace UsefulApp
                     break;
             }
 			return op;
+		}
+
+		static void DeleteEvents()
+        {
+			int eventid;
+
+			PrintEvents();
+			Console.Write("Select Id Events: ");
+			int.TryParse(Console.ReadLine(), out eventid);
+
+			var eventsDAL = new EventsDAL(_iconfiguration);
+			var listEventsModels = eventsDAL.DeleteEvents(eventid);
+
+			PrintEvents();
 		}
 
 	}
