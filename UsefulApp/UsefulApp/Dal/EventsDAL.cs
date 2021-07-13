@@ -45,7 +45,6 @@ namespace UsefulApp.Dal
             }
             return listEventsModels;
         }
-
         public List<EventsModels> GetListEventMonth(string eventMonth)
         {
             var listEventsModels = new List<EventsModels>();
@@ -76,12 +75,9 @@ namespace UsefulApp.Dal
             }
             return listEventsModels;
         }
-
-
         public EventsModels AddEvents(string eventName, string userName)
         {
-            var eventaux = new EventsModels();
-            
+            var eventaux = new EventsModels();          
             try
             {
                 using (SqlConnection con = new SqlConnection(_connectionString))
@@ -105,7 +101,6 @@ namespace UsefulApp.Dal
         public EventsModels DeleteEvents(int idevent)
         {
             var eventidaux = new EventsModels();
-
             try
             {
                 using (SqlConnection con = new SqlConnection(_connectionString))
@@ -124,30 +119,6 @@ namespace UsefulApp.Dal
             }
             return eventidaux;
         }
-
-        public EventsModels DeleteEvents(int idevent)
-        {
-            var eventidaux = new EventsModels();
-
-            try
-            {
-                using (SqlConnection con = new SqlConnection(_connectionString))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("sp_delete_event", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@idevent", SqlDbType.Int).Value = idevent;
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return eventidaux;
-        }
-
 
     }
 }
