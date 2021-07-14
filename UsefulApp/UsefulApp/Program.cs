@@ -156,7 +156,7 @@ namespace UsefulApp
 				Console.WriteLine("5) Exit\n");
 				Console.Write("select an option: ");
 
-			} while (ControlMenu() != 4);
+			} while (ControlMenu() != 5);
 		}
 		static int ControlMenu()
         {
