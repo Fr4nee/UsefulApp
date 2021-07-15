@@ -10,7 +10,6 @@ namespace UsefulApp.Dal
     class EventsDAL
     {
         private string _connectionString;
-
         public EventsDAL(IConfiguration iconfiguration)
         {
             _connectionString = iconfiguration.GetConnectionString("Default");
@@ -119,6 +118,55 @@ namespace UsefulApp.Dal
             }
             return eventidaux;
         }
-
+        public List<NoteModels> GetNotes()
+        {
+            var listNotesModels = new List<NoteModels>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SP_showNotes", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        listNotesModels.Add(new NoteModels
+                        {
+                            id_note = Convert.ToInt32(rdr[0]),
+                            userName = rdr[1].ToString(),
+                            note = rdr[2].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return listNotesModels;
+        }
+        public EventsModels AddNotes(string note, string userName)
+        {
+            var noteaux = new EventsModels();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("sp_add_notes", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@username", SqlDbType.NVarChar).Value = userName;
+                    cmd.Parameters.AddWithValue("@note", SqlDbType.NVarChar).Value = note;
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return noteaux;
+        }
     }
 }

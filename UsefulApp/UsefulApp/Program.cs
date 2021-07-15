@@ -59,6 +59,7 @@ namespace UsefulApp
 				Console.WriteLine();
 			}
 		}
+
         private static string SelectMonth()
         {
 			int aux;
@@ -142,6 +143,26 @@ namespace UsefulApp
 			var eventsDAL = new EventsDAL(_iconfiguration);
 			var listEventsModels = eventsDAL.AddEvents(eventName, userName);
 		}
+		static void PrintNotes()
+		{
+			var eventsDAL = new EventsDAL(_iconfiguration);
+			var listNotesModels = eventsDAL.GetNotes();
+
+			string[] notesBanner = { "Id Note", "Person", "Note"};
+
+			for (int i = 0; i < notesBanner.Length; i++)
+			{
+				Console.Write($"{notesBanner[i],-10}");
+			}
+			Console.WriteLine();
+			for (int i = 0; i < listNotesModels.Count; i++)
+			{
+				Console.Write($"|{listNotesModels[i].id_note}|");
+				Console.Write($"{listNotesModels[i].userName}|");
+				Console.Write($"{listNotesModels[i].note}|");
+				Console.WriteLine();
+			}
+		}
 		static void Menu()
         {
             do
@@ -152,10 +173,12 @@ namespace UsefulApp
 				Console.WriteLine("2) Show All Events");
 				Console.WriteLine("3) Show Months Events");
 				Console.WriteLine("4) Delete Events");
-				Console.WriteLine("5) Exit\n");
+				Console.WriteLine("5) Add Notes");
+				Console.WriteLine("6) Print Notes");
+				Console.WriteLine("9) Exit\n");
 				Console.Write("select an option: ");
 
-			} while (ControlMenu() != 5);
+			} while (ControlMenu() != 9);
 		}
 		static int ControlMenu()
         {
@@ -183,6 +206,16 @@ namespace UsefulApp
 					DeleteEvents();
 					break;
 				case 5:
+					Console.Clear();
+					FillAddNotes();
+					Continue();
+					break;
+				case 6:
+					Console.Clear();
+					PrintNotes();
+					Continue();
+					break;
+				case 9:
 					break;
 
 				default:
@@ -192,6 +225,7 @@ namespace UsefulApp
 		}
 		static void DeleteEvents()
 		{
+
 			int eventid;
 			string val;
 
@@ -220,6 +254,20 @@ namespace UsefulApp
 			} while (val == "y");
 									
 			PrintEvents();
+		}
+		static void FillAddNotes()
+        {
+			string note;
+			string userName;
+
+			Console.Write("Person: ");
+			userName = ValStr();
+			Console.Clear();
+			Console.Write("Describe the event: ");
+			note = ValStr();
+
+			var eventsDAL = new EventsDAL(_iconfiguration);
+			var listEventsModels = eventsDAL.AddNotes(note, userName);
 		}
 		static string ValStr()
         {
@@ -266,7 +314,6 @@ namespace UsefulApp
 			}
 			return str;
 		}
-
 		static int ValInt()
 		{
 			int num;
@@ -312,7 +359,6 @@ namespace UsefulApp
 			}
 			return num;
 		}
-
 		static void Continue()
         {
 			Console.WriteLine("Press any key to continue...");
