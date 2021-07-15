@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace UsefulApp
 {
@@ -30,18 +31,17 @@ namespace UsefulApp
 
 			for (int i = 0; i < eventsBanner.Length; i++)
 			{
-				Console.Write($"|{eventsBanner[i],-10}");
+				Console.Write($"|{eventsBanner[i],-15}");
 			}
 			Console.WriteLine();
 			for (int i = 0; i < listEventsModels.Count; i++)
 			{
-				Console.Write($"|{listEventsModels[i].id_event,-10}|");
-				Console.Write($"{listEventsModels[i].userName,-10}|");
-				Console.Write($"{listEventsModels[i].nameEvent,-10}|");
-				Console.Write($"{listEventsModels[i].eventDate,-10}|");
+				Console.Write($"|{listEventsModels[i].id_event,-15}|");
+				Console.Write($"{listEventsModels[i].userName,-15}|");
+				Console.Write($"{listEventsModels[i].nameEvent,-15}|");
+				Console.Write($"{listEventsModels[i].eventDate,-15}|");
 				Console.WriteLine();
 			}
-			Console.ReadKey();
 		}
 		static void PrintMonthEvents()
 		{
@@ -58,7 +58,6 @@ namespace UsefulApp
 				Console.Write($"{listEventsModels[i].eventDate,-10}|");
 				Console.WriteLine();
 			}
-			Console.ReadKey();
 		}
         private static string SelectMonth()
         {
@@ -82,7 +81,6 @@ namespace UsefulApp
 			monthEvent = SetMonth(aux);
 			return monthEvent;
         }
-
         private static string SetMonth(int aux)
         {
 			string monthToReturn;
@@ -136,9 +134,10 @@ namespace UsefulApp
 			string userName;
 
 			Console.Write("Person: ");
-			userName = Console.ReadLine();
+			userName = ValStr();
+			Console.Clear();
 			Console.Write("Describe the event: ");
-            eventName = Console.ReadLine();
+            eventName = ValStr();
             
 			var eventsDAL = new EventsDAL(_iconfiguration);
 			var listEventsModels = eventsDAL.AddEvents(eventName, userName);
@@ -158,8 +157,6 @@ namespace UsefulApp
 
 			} while (ControlMenu() != 5);
 		}
-
-
 		static int ControlMenu()
         {
 			int op;
@@ -174,10 +171,12 @@ namespace UsefulApp
 				case 2:
 					Console.Clear();
 					PrintEvents();
+					Continue();
 					break;
 				case 3:
 					Console.Clear();
 					PrintMonthEvents();
+					Continue();
 					break;
 				case 4:
 					Console.Clear();
@@ -194,16 +193,132 @@ namespace UsefulApp
 		static void DeleteEvents()
 		{
 			int eventid;
+			string val;
 
-			PrintEvents();
-			Console.Write("Select Id Events: ");
-			int.TryParse(Console.ReadLine(), out eventid);
+            do
+            {
+				Console.Clear();
+				PrintEvents();
+				Console.Write("\nSelect Id Events: ");
+				int.TryParse(Console.ReadLine(), out eventid);
 
-			var eventsDAL = new EventsDAL(_iconfiguration);
-			var listEventsModels = eventsDAL.DeleteEvents(eventid);
+				var eventsDAL = new EventsDAL(_iconfiguration);
+				var listEventsModels = eventsDAL.DeleteEvents(eventid);
 
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine("¡Done!");
+				Console.ResetColor();
+
+				Console.WriteLine("Continue deleting? y/n");
+				val = Console.ReadLine();
+
+				if (val == "n")
+                {
+					break;
+                }
+
+			} while (val == "y");
+									
 			PrintEvents();
 		}
+		static string ValStr()
+        {
+			string str;
+			string val;
+
+			str = Console.ReadLine().Trim();
+
+			while (string.IsNullOrEmpty(str) || str.Any(char.IsDigit))
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Error!!! Enter a valid data:");
+				Console.ResetColor();
+				str = Console.ReadLine().Trim();
+			}
+
+			Console.WriteLine($"You introduced '{str}' ¿It's OK? y/n");
+			val = Console.ReadLine();
+
+			while (val != "y" && val != "n")
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Error!!! Write y/n");
+				Console.ResetColor();
+				val = Console.ReadLine().Trim().ToLower();
+			}
+
+			while (val.Any(char.IsDigit) || string.IsNullOrEmpty(val) || val != "y")
+			{
+				while (val == "n")
+				{
+					Console.WriteLine("Re-enter the data:");
+					str = Console.ReadLine().Trim();
+					Console.WriteLine($"You introduced '{str}' ¿It's OK? y/n");
+					val = Console.ReadLine().Trim().ToLower();
+				}              
+			}
+			if (val == "y")
+			{
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine("¡Done!");
+				Console.ResetColor();
+				Console.ReadKey();
+			}
+			return str;
+		}
+
+		static int ValInt()
+		{
+			int num;
+			string val;
+
+			bool conv = int.TryParse(Console.ReadLine().Trim(), out num);
+
+			while (!conv)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Error!!! Enter a valid data:");
+				Console.ResetColor();
+				conv = int.TryParse(Console.ReadLine().Trim(), out num);
+			}
+
+			Console.WriteLine($"You introduced '{num}' ¿it's OK? y/n");
+			val = Console.ReadLine();
+
+			while (val != "y" && val != "n")
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Error!!! Write y/n");
+				Console.ResetColor();
+				val = Console.ReadLine().Trim().ToLower();
+			}
+
+			while (val.Any(char.IsDigit) || string.IsNullOrEmpty(val) || val != "y")
+			{
+				while (val == "n")
+				{
+					Console.WriteLine("Re-enter the data:");
+					int.TryParse(Console.ReadLine().Trim(), out num);
+					Console.WriteLine($"You introduced '{num}' ¿it's OK? y/n");
+					val = Console.ReadLine().Trim().ToLower();
+				}
+			}
+			if (val == "y")
+			{
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine("Done!");
+				Console.ResetColor();
+				Console.ReadKey();
+			}
+			return num;
+		}
+
+		static void Continue()
+        {
+			Console.WriteLine("Press any key to continue...");
+			Console.ReadKey();
+        }
 	}
 }
+
 
